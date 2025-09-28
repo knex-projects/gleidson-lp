@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import "tailwindcss";
+
 :root {
+    --font-heading: 'Archivo Black', sans-serif;
+    --font-body: 'Public Sans', sans-serif;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #FAF9F8;
+}
+
+h1{
+    font-family: var(--font-heading);
+}
+
+p {
+    font-family: var(--font-body);
+}
+
+.blue-btn{
+    display: inline-flex;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 4px;
+    background:  #3C88F6;
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.blue-btn:hover {
+    background:  #0068FF;
+}
