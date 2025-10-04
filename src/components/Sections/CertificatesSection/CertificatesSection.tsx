@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Card from "../../ui/card";
+import Card from "../../ui/cardCertificate";
 import Overlay from "./Overlay";
 import { certificatesMock } from "../../../mock/certificatesMock";
 import type { Certificate } from "../../../mock/certificate";
