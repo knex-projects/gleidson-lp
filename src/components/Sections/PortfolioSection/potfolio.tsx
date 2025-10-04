@@ -1,4 +1,4 @@
-"use client"; // Necessário para hooks como useState e useEffect em Next.js 13+ App Router
+"use client";
 
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,11 +6,13 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  type CarouselApi, // Importe o tipo da API
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
-import { cn } from "@/lib/utils"; // Importe sua função 'cn' se ainda não tiver
+import { cn } from "@/lib/utils";
 
-// Seus dados do portfólio
+// Seus dados do portfólio...
 export const portfolioItems = [
   {
     id: 1,
@@ -50,82 +52,90 @@ export const portfolioItems = [
 ];
 
 const PortfolioSection = () => {
-  // 1. Estados para controlar a API do carrossel e o slide atual
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
 
-  // 2. Efeito para ouvir as mudanças de slide e atualizar o estado 'current'
   React.useEffect(() => {
     if (!api) {
       return;
     }
-
-    // Define o slide inicial e ouve por mudanças
     setCurrent(api.selectedScrollSnap() + 1);
-
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
 
   return (
-    // Um container geral para a seção
-    <div className="w-full max-w-2xl mx-auto p-5 flex flex-col items-center">
-      {/* 3. O componente Carousel */}
-      <Carousel
-        setApi={setApi} // Conecta o estado da API ao carrossel
-        opts={{
-          align: "start", // Alinha os slides pelo início
-          loop: true, // Faz o carrossel ser infinito
-        }}
-        className="w-full"
-      >
-        {/* Adicionado ml- (margem negativa) para ajudar no efeito vazado */}
-        <CarouselContent className="-ml-4">
-          {portfolioItems.map((item) => (
-            // Apenas a imagem vai dentro do slide
-            <CarouselItem
-              key={item.id}
-              className="pl-4 md:basis-1/2 lg:basis-2/3"
-            >
-              <Card className="py-0 bg-transparent">
-                <CardContent className="p-0">
-                  <img
-                    src={item.imageUrl}
-                    alt={item.title}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </CardContent>
-              </Card>
-            </CarouselItem>
+    <section className="p-5">
+      <h1 className="text-3xl text-primary-foreground">
+        Conheça alguns dos <br /> meus trabalhos
+      </h1>
+      <div className="w-full max-w-4xl py-16 mx-auto flex flex-col items-center">
+        <Carousel
+          setApi={setApi}
+          opts={{
+            align: "center",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {portfolioItems.map((item, index) => (
+              <CarouselItem
+                key={item.id}
+                // ▼▼▼ LINHA ALTERADA AQUI ▼▼▼
+                className="pl-4 basis-11/12 md:basis-[400px]"
+              >
+                <div
+                  className={cn(
+                    "transition-all duration-300 ease-in-out",
+                    current === index + 1
+                      ? "scale-100 opacity-100"
+                      : "scale-80 opacity-50"
+                  )}
+                >
+                  <Card className="w-full py-0 bg-transparent border-none">
+                    <CardContent className="p-0">
+                      <img
+                        src={item.imageUrl}
+                        alt={item.title}
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="hidden md:block">
+            <CarouselPrevious className="absolute left-[-50px] top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-[-50px] top-1/2 -translate-y-1/2" />
+          </div>
+        </Carousel>
+
+        <div className="flex items-center justify-center gap-2 py-4">
+          {portfolioItems.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={cn(
+                "h-2 w-2 rounded-full transition-all",
+                current === index + 1 ? "w-4 bg-primary" : "bg-primary/20"
+              )}
+            />
           ))}
-        </CarouselContent>
-      </Carousel>
+        </div>
 
-      {/* 4. Pontos de navegação (Dots) criados manualmente */}
-      <div className="flex items-center justify-center gap-2 py-4">
-        {portfolioItems.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => api?.scrollTo(index)}
-            className={cn(
-              "h-2 w-2 rounded-full transition-all",
-              current === index + 1 ? "w-4 bg-primary" : "bg-primary/20"
-            )}
-          />
-        ))}
+        <div className="mt-4 text-center h-32 md:h-28">
+          <h3 className="text-[16px] text-primary font-semibold">
+            {portfolioItems[current - 1]?.title}
+          </h3>
+          <p className="mt-2 text-[14px] text-justify md:text-center text-muted-foreground max-w-lg mx-auto">
+            {portfolioItems[current - 1]?.description}
+          </p>
+        </div>
       </div>
-
-      {/* 5. Título e descrição RENDERIZADOS FORA do carrossel */}
-      <div className="mt-4 text-center">
-        <h3 className="text-[16px]  text-primary">
-          {portfolioItems[current - 1]?.title}
-        </h3>
-        <p className="mt-2 text-[14px] text-justify text-muted-foreground">
-          {portfolioItems[current - 1]?.description}
-        </p>
-      </div>
-    </div>
+    </section>
   );
 };
 
