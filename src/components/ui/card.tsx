@@ -1,28 +1,92 @@
-interface CardProps {
-  title: string;
-  description: string;
-  onClick: () => void;
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+function Card({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card"
+      className={cn(
+        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
-export default function Card({ title, description, onClick }: CardProps) {
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div className="w-[364px] min-h-[236px] md:w-[424px] md:h-[342px] rounded-md bg-[#FFF] shadow-[0px_2px_2px_rgba(0,0,0,0.25)] items-center p-6">
-      <h3 className="text-[#454647] text-[20px] md:text-[24px] px-4 py-1 h-[80px]">
-        {title}
-      </h3>
-      <p className="text-[#898989] text-[14px] md:text-[16px]/6 px-5 md:py-3 break-words max-w-[286px] h-[64px] md:max-w-[320px] md:h-[94px]">
-        {description}
-      </p>
-      <div className="justify-end flex mt-[38px]">
-        <button
-          onClick={onClick}
-          className="bg-[#B8E3FF] hover:bg-[#83CDFF] px-[14px] py-[8px] md:px-[24px] md:py-[16px] rounded-md transition delay-150 duration-300 ease-in-out"
-        >
-          <p className="text-[#002050] text-[12px] md:text-[16px] font-[700]">
-            Exibir →{" "}
-          </p>
-        </button>
-      </div>
-    </div>
-  );
+    <div
+      data-slot="card-header"
+      className={cn(
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-title"
+      className={cn("leading-none font-semibold", className)}
+      {...props}
+    />
+  )
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  )
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={cn(
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-content"
+      className={cn("px-6", className)}
+      {...props}
+    />
+  )
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
+      {...props}
+    />
+  )
+}
+
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent,
 }
