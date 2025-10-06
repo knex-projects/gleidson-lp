@@ -38,7 +38,7 @@ const DesktopNav = () => {
           <a
             key={link.href}
             href={link.href}
-            className="rounded-md px-3 py-2 text-lg font-medium text-primary-foreground transition-colors hover:text-secondary hover:underline"
+            className="rounded-md px-3 py-2 text-lg text-white font-medium transition-colors hover:text-secondary hover:underline"
           >
             {link.label}
           </a>
