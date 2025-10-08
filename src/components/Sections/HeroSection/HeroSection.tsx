@@ -67,7 +67,7 @@ export default function HeroSection() {
           </a>
         </div>
       </div>
-      <figure className="col-start-1 col-span-4 order-1 md:order-2 md:col-span-2 lg:col-span-3 flex justify-center self-end md:self-center h-[310px] md:h-[543px] w-auto">
+      <figure className="col-start-1 col-span-4 order-1 md:order-2 md:col-span-2 lg:col-span-3 flex justify-center self-end md:self-center h-[340px] md:h-[616px] w-auto">
         <img
           src={Img}
           alt="Foto do Gleidson, com moldura gráfica estilizada"
