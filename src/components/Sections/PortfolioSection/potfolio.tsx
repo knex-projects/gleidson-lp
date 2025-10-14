@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -13,7 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 
 // Seus dados do portfólio...
-export const portfolioItems = [
+const portfolioItems = [
   {
     id: 1,
     title: "Curso de português - Socorro Vieira",
@@ -59,18 +57,20 @@ const PortfolioSection = () => {
     if (!api) {
       return;
     }
+    // Inicia no slide 0, então adicionamos 1
     setCurrent(api.selectedScrollSnap() + 1);
+
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
 
   return (
-    <section className="p-5">
-      <h1 className="text-3xl text-primary-foreground">
+    <section className="max-w-[1248px] mt-24">
+      <h1 className="text-3xl md:text-[48px] text-primary-foreground">
         Conheça alguns dos <br /> meus trabalhos
       </h1>
-      <div className="w-full max-w-4xl py-16 mx-auto flex flex-col items-center">
+      <div className="w-full  py-16 mx-auto flex flex-col items-center">
         <Carousel
           setApi={setApi}
           opts={{
@@ -83,15 +83,15 @@ const PortfolioSection = () => {
             {portfolioItems.map((item, index) => (
               <CarouselItem
                 key={item.id}
-                // ▼▼▼ LINHA ALTERADA AQUI ▼▼▼
-                className="pl-4 basis-11/12 md:basis-[400px]"
+                className="pl-4 basis-4/5 md:basis-1/2 lg:basis-1/3"
               >
                 <div
                   className={cn(
-                    "transition-all duration-300 ease-in-out",
+                    "transition-all duration-500 ease-out", // Classes base de transição
+
                     current === index + 1
                       ? "scale-100 opacity-100"
-                      : "scale-80 opacity-50"
+                      : "scale-75 opacity-50"
                   )}
                 >
                   <Card className="w-full py-0 bg-transparent border-none">
@@ -113,6 +113,7 @@ const PortfolioSection = () => {
           </div>
         </Carousel>
 
+        {/* O resto do seu código já estava perfeito e não precisa de alterações */}
         <div className="flex items-center justify-center gap-2 py-4">
           {portfolioItems.map((_, index) => (
             <button
