@@ -98,13 +98,20 @@ const PortfolioSection = () => {
           <CarouselContent className="h-96 flex items-center -ml-[-12px] px-12 my-6">
             {portfolioItems.map((item, index) => {
               return (
-                <CarouselItem key={item.id} className="basis-1/3 flex items-center justify-center px-1">
+                <CarouselItem key={item.id} className="basis-1/3 flex items-end justify-center px-1">
                   <div className="w-full flex items-center justify-center">
                     <img
                       src={item.imageUrl}
                       alt={item.title}
                       className={`object-cover rounded-lg transition-all duration-500 ease-out ${
-                        index == current ? "scale-170 z-50 relative" : "z-10 opacity-60 relative"
+                        index == current ? "scale-170 z-50 relative" 
+                        : index < current - 2 ? "scale-60 z-10 -ml-[-590%]"  
+                        : index > current + 2 ? "scale-60 z-10 -mr-[-590%]" 
+                        : index < current - 1 ? "scale-80 z-20 -ml-[-230%]"  
+                        : index > current + 1 ? "scale-80 z-20 -mr-[-230%]" 
+                        : index < current ? "z-30 -ml-[-90%]" 
+                        : index > current ? "z-30 -mr-[-90%]"
+                        : "z-10 opacity-60 relative"
                       }`}
                     />
                   </div>
