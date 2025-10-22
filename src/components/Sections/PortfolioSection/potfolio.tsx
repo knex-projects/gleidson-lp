@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import {
   Carousel,
@@ -58,18 +56,19 @@ const PortfolioSection = () => {
       return;
     }
 
-    const normalizeIndex = (index: number) => {
-      return ((index % portfolioItems.length) + portfolioItems.length) % portfolioItems.length;
-    };
-
-    setCurrent(normalizeIndex(api.selectedScrollSnap()));
-
+    // A normalização do índice precisa ser baseada no número de slides
+    // quando o loop está ativo.
     const onSelect = () => {
+      if (api.scrollSnapList().length === 0) return;
+      const count = api.scrollSnapList().length;
       const rawIndex = api.selectedScrollSnap();
-      const normalizedIndex = normalizeIndex(rawIndex);
+      // Fórmula correta para normalizar com loop
+      const normalizedIndex = ((rawIndex % count) + count) % count;
       setCurrent(normalizedIndex);
-      console.log("Item do meio (ativo):", normalizedIndex, portfolioItems[normalizedIndex]?.title);
     };
+
+    // Define o slide inicial
+    onSelect();
 
     api.on("select", onSelect);
 
@@ -79,75 +78,84 @@ const PortfolioSection = () => {
   }, [api]);
 
   return (
-    <section className="py-5">
-      <h1 className="text-3xl text-primary-foreground mb-8">
+    // MUDANÇA 1: Limpamos a section.
+    // Removido 'm-w-[1248px]' (typo) e 'w-full'.
+    // A section agora vai respeitar o container global da sua página.
+    <section className="mt-32">
+      <h1 className="text-[#002050] text-[28px] md:text-[48px] w-full mb-16 sm:mb-0">
         Conheça alguns dos <br /> meus trabalhos
       </h1>
 
-      <div className="mx-auto py-16">
-        <Carousel
-          setApi={setApi}
-          opts={{
-            align: "center",
-            loop: false,
-            slidesToScroll: 1,
-            containScroll: false,
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="h-96 flex items-center -ml-[-12px] px-12 my-6">
-            {portfolioItems.map((item, index) => {
-              return (
-                <CarouselItem key={item.id} className="basis-1/3 flex items-end justify-center px-1">
-                  <div className="w-full flex items-center justify-center">
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      className={`object-cover rounded-lg transition-all duration-500 ease-out ${
-                        index == current ? "scale-170 z-50 relative" 
-                        : index < current - 2 ? "scale-60 z-10 -ml-[-590%]"  
-                        : index > current + 2 ? "scale-60 z-10 -mr-[-590%]" 
-                        : index < current - 1 ? "scale-80 z-20 -ml-[-230%]"  
-                        : index > current + 1 ? "scale-80 z-20 -mr-[-230%]" 
-                        : index < current ? "z-30 -ml-[-90%]" 
-                        : index > current ? "z-30 -mr-[-90%]"
-                        : "z-10 opacity-60 relative"
-                      }`}
-                    />
-                  </div>
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
+      {/* MUDANÇA 2: Removido o 'div' com 'max-w-5xl mx-auto'
+          que estava envolvendo o carrossel. */}
+      <Carousel
+        setApi={setApi}
+        opts={{
+          align: "center",
+          loop: true,
+          slidesToScroll: 1,
+        }}
+        className="w-full"
+      >
+        <CarouselContent className="h-auto flex items-center my-6">
+          {portfolioItems.map((item, index) => {
+            return (
+              <CarouselItem
+                key={item.id}
+                // As classes de desktop (lg:w-[32rem]) foram mantidas.
+                className="basis-full md:basis-1/2 lg:w-[32rem] flex items-end justify-center"
+              >
+                <div className="w-full flex items-center justify-center">
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className={cn(
+                      "object-cover rounded-lg transition-all duration-500 ease-out",
+                      // MUDANÇA 3 (MAIS IMPORTANTE):
+                      // O padrão agora é 'scale-100' (mobile).
+                      // O efeito de escala e opacidade SÓ começa no breakpoint 'md:'.
+                      index === current
+                        ? "md:scale-110 z-20" // No mobile, é scale-100 (padrão)
+                        : "md:scale-90 z-10 md:opacity-60" // No mobile, é scale-100 e opacity-100 (padrão)
+                    )}
+                  />
+                </div>
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
 
-          <CarouselPrevious className="w-12 h-12 left-0 md:-left-12 bg-primary text-white rounded-full p-3 hover:bg-primary/90 hover:text-white transition-colors z-[100] border-0 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-primary" />
-          <CarouselNext className="w-12 h-12 right-0 md:-right-12 bg-primary text-white rounded-full p-3 hover:bg-primary/90 hover:text-white transition-colors z-[100] border-0 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-primary" />
-        </Carousel>
+        {/* Botões Previous/Next (Desktop) - Adicionando 'hidden md:flex' */}
+        {/* Escondemos os botões no mobile, como no protótipo */}
+        <CarouselPrevious className="w-12 h-12 left-0 md:-left-16 bg-primary text-white rounded-full p-3 hover:bg-primary/90 hover:text-white transition-colors z-[100] border-0 hidden md:flex" />
+        <CarouselNext className="w-12 h-12 right-0 md:-right-16 bg-primary text-white rounded-full p-3 hover:bg-primary/90 hover:text-white transition-colors z-[100] border-0 hidden md:flex" />
+      </Carousel>
 
-        {/* Indicadores de paginação */}
-        <div className="flex items-center justify-center gap-2 mt-4">
-          {portfolioItems.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={cn(
-                "h-2 rounded-full transition-all",
-                current === index ? "w-8 bg-primary" : "w-2 bg-primary/20"
-              )}
-              aria-label={`Ir para slide ${index + 1}`}
-            />
-          ))}
-        </div>
+      {/* Indicadores de paginação */}
+      <div className="flex items-center justify-center gap-2 mt-4">
+        {portfolioItems.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => api?.scrollTo(index)}
+            className={cn(
+              "h-2 rounded-full transition-all",
+              current === index ? "w-8 bg-primary" : "w-2 bg-primary/20"
+            )}
+            aria-label={`Ir para slide ${index + 1}`}
+          />
+        ))}
+      </div>
 
-        {/* Informações do item atual */}
-        <div className="mt-8 text-center max-w-2xl mx-auto min-h-[120px]">
-          <h3 className="text-xl font-semibold text-primary mb-2">
-            {portfolioItems[current]?.title}
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            {portfolioItems[current]?.description}
-          </p>
-        </div>
+      {/* Informações do item atual */}
+      {/* MUDANÇA 4: Trocado 'text-justify' por 'text-center'
+          para bater com o protótipo mobile. */}
+      <div className="mt-8 max-w-2xl mx-auto min-h-[120px]">
+        <h3 className="text-xl text-left font-semibold text-primary mb-2">
+          {portfolioItems[current]?.title}
+        </h3>
+        <p className="text-sm text-justify text-muted-foreground">
+          {portfolioItems[current]?.description}
+        </p>
       </div>
     </section>
   );

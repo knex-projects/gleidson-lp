@@ -17,10 +17,13 @@ const navLinks = [
 
 export const Header = () => {
   return (
-    <header>
-      <div className="hidden md:block">
+    <header className="max-w-[1248px] w-full py-4">
+      {/* Container para centralizar o DesktopNav */}
+      <div className="hidden md:block ">
         <DesktopNav />
       </div>
+
+      {/* MobileNav fora do container */}
       <div className="md:hidden">
         <MobileNav />
       </div>
@@ -30,7 +33,7 @@ export const Header = () => {
 
 const DesktopNav = () => {
   return (
-    <nav className="flex items-center justify-between bg-primary p-4 px-12 rounded-full">
+    <nav className="flex items-center justify-between bg-primary p-4 px-12 rounded-full w-full">
       <img src="./gleidson-logo-1.svg" alt="logo" />
 
       <div className="flex gap-1.5">
@@ -50,7 +53,8 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
   return (
-    <nav className="flex items-center justify-between p-4">
+    // Adicionado padding horizontal (px-4 sm:px-6)
+    <nav className="flex items-center justify-between p-4 px-4 sm:px-6">
       <img src="./gleidson-logo-2.svg" alt="logo" />
 
       <Sheet>
