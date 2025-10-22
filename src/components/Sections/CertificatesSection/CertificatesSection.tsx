@@ -13,13 +13,14 @@ export default function CertificatesSection() {
   }, []);
 
   return (
-    <section className="md:justify-center items-center mx-auto max-w-[1248px] grid gap-[24px] lg:[grid-template-columns:repeat(6,200px)] ml-4 md:ml-auto">
-      <h2 className="text-[#002050] text-[28px] md:text-[48px] col-span-4 md:col-span-6 md:mb-[36px]">
+    <section className="flex flex-col items-center max-w-[1248px] gap-[24px] mt-32 md:px-0">
+      <h2 className="text-[#002050] text-[28px] md:text-[48px] w-full mb-16">
         Certificados
       </h2>
-      <div className="w-[390px] md:mx-auto md:max-w-[1248px] grid gap-[12px] md:gap-[24px] lg:[grid-template-columns:repeat(6,200px)] carroussel">
+
+      <div className="w-[390px] md:w-full grid gap-[12px] md:gap-[24px] md:grid-cols-3 carroussel">
         {certificates.map((certificate) => (
-          <div className="col-span-4 md:col-span-2 flex justify-center">
+          <div className="col-span-4 md:col-span-1 flex justify-center">
             <Card
               key={certificate.id}
               title={certificate.title}
