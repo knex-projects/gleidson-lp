@@ -5,7 +5,7 @@ import PortfolioSection from "./components/Sections/PortfolioSection/potfolio";
 
 function App() {
   return (
-    <div className="px-[10%] mt-5 py-6">
+    <div className="flex items-center justify-center flex-col px-[10%] mt-5 py-6">
       <Header />
       <HeroSection />
       <CertificatesSection />
