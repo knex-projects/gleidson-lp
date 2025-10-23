@@ -7,6 +7,8 @@ export const certificatesMock: Certificate[] = [
     description:
       "Certificado de conclusão da trilha Marketing Digital para Sua Empresa: Primeiros Passos (Sebrae), carga horária de 6h, realizado entre 29/11/2024 e 02/12/2024.",
     images: ["../src/assets/certificates/marketing-1.png"],
+    pdfURL: "../src/assets/certificates/marketing.pdf",
+    type: 'pdf',
   },
   {
     id: 2,
@@ -17,6 +19,8 @@ export const certificatesMock: Certificate[] = [
       "../src/assets/certificates/graphic-designer-1.png",
       "../src/assets/certificates/graphic-designer-2.png",
     ],
+    pdfURL: "../src/assets/certificates/graphic-designer.pdf",
+    type: 'pdf',
   },
   {
     id: 3,
@@ -27,6 +31,8 @@ export const certificatesMock: Certificate[] = [
       "../src/assets/certificates/UBEST-1.png",
       "../src/assets/certificates/UBEST-2.png",
     ],
+    pdfURL: "../src/assets/certificates/UBEST.pdf",
+    type: 'pdf',
   },
   {
     id: 4,
@@ -37,6 +43,8 @@ export const certificatesMock: Certificate[] = [
       "../src/assets/certificates/branding-1.png",
       "../src/assets/certificates/branding-2.png",
     ],
+    pdfURL: "../src/assets/certificates/branding.pdf",
+    type: 'pdf',
   },
   {
     id: 5,
@@ -47,6 +55,8 @@ export const certificatesMock: Certificate[] = [
       "../src/assets/certificates/design-theory-1.png",
       "../src/assets/certificates/design-theory-2.png",
     ],
+    pdfURL: "../src/assets/certificates/design-theory.pdf",
+    type: 'pdf',
   },
   {
     id: 6,
@@ -57,5 +67,7 @@ export const certificatesMock: Certificate[] = [
       "../src/assets/certificates/color-tipography-1.png",
       "../src/assets/certificates/color-tipography-2.png",
     ],
+    pdfURL: "../src/assets/certificates/color-tipography.pdf",
+    type: 'pdf',
   },
 ];
