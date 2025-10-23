@@ -75,7 +75,7 @@ const PortfolioSection = () => {
 
   return (
     <section className="mt-32 max-w-[1248px]">
-      <h1 className="text-[#002050] text-[28px] md:text-[48px] w-full mb-28">
+      <h1 className="text-[#002050] text-[28px] md:text-[48px] w-full mb-8 md:mb-28">
         Conheça alguns dos <br /> meus trabalhos
       </h1>
       <Carousel
