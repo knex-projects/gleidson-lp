@@ -11,6 +11,7 @@
   --font-heading: "Archivo Black", sans-serif;
   --font-body: "Public Sans", sans-serif;
   --radius: 0.625rem;
+  --preto-5: #5f6162;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -20,9 +21,9 @@
   --primary: oklch(0.3656 0.1454 259.52);
   --primary-foreground: #002050;
   --secondary: oklch(0.6359 0.181 258.09);
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary-foreground: #83cdff;
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: #5f6162;
   --accent: oklch(0.5672 0.238518 260.5437);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
