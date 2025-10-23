@@ -18,8 +18,13 @@ export default function CertificatesSection() {
   }, []);
 
   const handleCertificateClick = (certificate: Certificate) => {
-    setSelectedImages(certificate.images);
-  };
+    if (certificate.type === 'pdf' && certificate.pdfURL) {
+      window.open(certificate.pdfURL, "_blank");
+      return;
+    }else{
+      setSelectedImages(certificate.images);
+    }
+    };
 
   return (
     <section className="flex flex-col items-center  max-w-[1248px] gap-[24px] mt-32 px-4 md:px-0">
@@ -34,8 +39,7 @@ export default function CertificatesSection() {
             key={certificate.id}
           >
             <Card
-              title={certificate.title}
-              description={certificate.description}
+              certificate={certificate}
               onClick={() => handleCertificateClick(certificate)}
             />
           </div>
@@ -54,8 +58,7 @@ export default function CertificatesSection() {
             {certificates.map((certificate) => (
               <CarouselItem className="pl-2" key={certificate.id}>
                 <Card
-                  title={certificate.title}
-                  description={certificate.description}
+                  certificate={certificate}
                   onClick={() => handleCertificateClick(certificate)}
                 />
               </CarouselItem>
