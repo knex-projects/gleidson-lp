@@ -22,7 +22,7 @@ export default function CertificatesSection() {
   };
 
   return (
-    <section className="flex flex-col items-center mx-auto max-w-[1248px] gap-[24px] mt-32 px-4 md:px-0">
+    <section className="flex flex-col items-center  max-w-[1248px] gap-[24px] mt-32 px-4 md:px-0">
       <h2 className="text-[#002050] text-[28px] md:text-[48px] w-full mb-16">
         Certificados
       </h2>
