@@ -18,7 +18,7 @@ export default function SkillsAndEducationSection() {
 
 function _CardFormacoes() {
   return (
-    <Card className="h-full pt-8 px-16 pb-20">
+    <Card className="h-full pt-8 px-2 mb:px-16 pb-20">
       <CardHeader>
         <CardTitle className="flex items-center gap-4">
           <div className="flex items-center justify-center w-[40px] h-[40px] bg-secondary-foreground rounded-[8px]">
@@ -51,7 +51,7 @@ function _CardFormacoes() {
 
 function _CardHabilidades() {
   return (
-    <Card className="h-full pt-8 px-16 pb-20">
+    <Card className="h-full pt-8 px-2 mb:px-16 pb-20">
       <CardHeader>
         <CardTitle className="flex items-center gap-4">
           <div className="flex items-center justify-center w-[40px] h-[40px] bg-secondary-foreground rounded-[8px]">
