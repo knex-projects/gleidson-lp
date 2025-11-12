@@ -3,7 +3,7 @@ import { GraduationCap, Brush } from "lucide-react";
 
 export default function SkillsAndEducationSection() {
   return (
-    <section className="mx-auto max-w-[1248px] mt-28 px-4 md:px-0">
+    <section className="mx-auto max-w-[1248px] w-full mt-28" id="sobre">
       <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-8">
         <div className="w-full md:w-1/2">
           <_CardFormacoes />

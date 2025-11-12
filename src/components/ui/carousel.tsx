@@ -156,9 +156,8 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 
   return (
     <div
-      // ... outros atributos
       className={cn(
-        "shrink-0 grow-0 basis-full", // <-- CORRIGIDO
+        "shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}

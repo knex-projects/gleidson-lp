@@ -2,8 +2,10 @@ import Img from "../../../assets/hero_photo.png";
 
 export default function HeroSection() {
   return (
-    <section className="flex flex-col md:flex-row md:items-center max-w-[1248px] w-full py-4 relative overflow-hidden">
-      {/* CONTEÚDO DE TEXTO (Sem alterações) */}
+    <section
+      className="flex flex-col md:flex-row md:items-center max-w-[1248px] w-full py-4 relative overflow-hidden"
+      id="home"
+    >
       <div className="order-2 md:order-none w-full md:w-1/2 pr-8 sm:mt-16">
         <p className="text-[#898989] text-[16px] lg:text-[24px]">
           Prazer, me chamo
@@ -15,7 +17,7 @@ export default function HeroSection() {
           Branding & Design Digital
         </p>
         <a
-          href="#"
+          href="#footer"
           className="blue-btn transition delay-150 duration-300 ease-in-out my-6 lg:my-[32px] inline-block"
         >
           <p className="text-[16px] lg:text-[20px] text-[#FAF9F8]">
@@ -23,7 +25,6 @@ export default function HeroSection() {
           </p>
         </a>
         <div className="flex gap-3">
-          {/* ... SVG Facebook ... */}
           <a
             href="https://www.facebook.com/profile.php?id=61575258052486"
             className="inline-block fill-[#83CDFF] hover:fill-[#47B5FF] hover:bg-[#47B5FF] bg-[#83CDFF] px-[12px] py-[6px]  md:px-[14px] md:py-[10px] rounded shadow-[1px_1px_2px_rgba(0,0,0,0.25)] transition delay-150 duration-300 ease-in-out"

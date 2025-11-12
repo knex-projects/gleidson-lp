@@ -18,16 +18,19 @@ export default function CertificatesSection() {
   }, []);
 
   const handleCertificateClick = (certificate: Certificate) => {
-    if (certificate.type === 'pdf' && certificate.pdfURL) {
+    if (certificate.type === "pdf" && certificate.pdfURL) {
       window.open(certificate.pdfURL, "_blank");
       return;
-    }else{
+    } else {
       setSelectedImages(certificate.images);
     }
-    };
+  };
 
   return (
-    <section className="flex flex-col items-center  max-w-[1248px] gap-[24px] mt-32 px-4 md:px-0">
+    <section
+      className="flex flex-col items-center  max-w-[1248px] w-full gap-[24px] mt-32"
+      id="certificados"
+    >
       <h2 className="text-[#002050] text-[28px] md:text-[48px] w-full mb-16">
         Certificados
       </h2>
