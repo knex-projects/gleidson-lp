@@ -17,7 +17,7 @@ export default function HeroSection() {
           Branding & Design Digital
         </p>
         <a
-          href="#footer"
+          href="#contato"
           className="blue-btn transition delay-150 duration-300 ease-in-out my-6 lg:my-[32px] inline-block"
         >
           <p className="text-[16px] lg:text-[20px] text-[#FAF9F8]">
