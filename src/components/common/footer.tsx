@@ -47,10 +47,10 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-[#002050] text-white py-16 md:py-24 mt-32"
+      className="bg-[#002050] text-white py-16 md:py-24 mt-32 "
       id="contato"
     >
-      <div className="mx-auto max-w-[1248px] px-4 md:px-10">
+      <div className="mx-auto max-w-[1248px] px-[10%] lg:px-[5%]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           <div className="flex flex-col gap-8">
             <h3 className="text-[16px] md:text-2xl font-semibold text-white">

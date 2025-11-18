@@ -6,18 +6,18 @@ export default function HeroSection() {
       className="flex flex-col md:flex-row md:items-center max-w-[1248px] w-full py-4 relative overflow-hidden"
       id="home"
     >
-      <div className="order-2 md:order-none w-full md:w-1/2 pr-8 sm:mt-16">
+      <div className="order-2 md:order-none w-full md:w-1/2 pr-8 sm:mt-16 mt-5">
         <p className="text-[#898989] text-[16px] lg:text-[24px]">
           Prazer, me chamo
         </p>
-        <h1 className="text-[#002050] text-[32px] lg:text-[64px] lg:my-[-8px]">
+        <h1 className="text-[#002050] text-[28px] lg:text-[56px] lg:my-[-8px] w-full">
           Gleidson Rodrigo
         </h1>
         <p className="text-[#AAAAAA] text-[16px] lg:text-[20px]">
           Branding & Design Digital
         </p>
         <a
-          href="#contato"
+          href="#contato  "
           className="blue-btn transition delay-150 duration-300 ease-in-out my-6 lg:my-[32px] inline-block"
         >
           <p className="text-[16px] lg:text-[20px] text-[#FAF9F8]">

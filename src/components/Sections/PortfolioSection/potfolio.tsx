@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 const portfolioItems = [
   {
     id: 0,
-    title: "Curso de português - Socorro Vieira",
+    title: "Curso de Português - Socorro Vieira",
     imageUrl: "./portfolio-01.png",
     description:
       "O Curso de Língua Portuguesa Socorro Vieira prepara estudantes do Ensino Médio e Superior para provas textuais de exames e vestibulares.",
@@ -26,14 +26,14 @@ const portfolioItems = [
   },
   {
     id: 2,
-    title: "Conceito: Logotipo do app BetterStorm",
+    title: "Conceito: Logotipo do App BetterStorm",
     imageUrl: "./portfolio-03.png",
     description:
       "BetterStorm é um conceito de aplicativo de finanças mobile, gerado pelo site goodbrief.io, voltado para pessoas com orçamento limitado.",
   },
   {
     id: 3,
-    title: "Conceito: Campanha publicitária Barion",
+    title: "Conceito: Campanha Publicitária Barion",
     imageUrl: "./portfolio-04.png",
     description:
       "Este é um anúncio de revista, da marca de chocolates Barion, para um trabalho de minha graduação. ",
@@ -92,9 +92,9 @@ const PortfolioSection = () => {
             return (
               <CarouselItem
                 key={item.id}
-                className="basis-full md:basis-1/2 lg:w-[32rem] flex items-end justify-center"
+                className="basis-full md:basis-1/2 lg:w-[32rem] flex items-end justify-center "
               >
-                <div className="w-full flex items-center justify-center">
+                <div className="w-full flex items-center justify-center ">
                   <img
                     src={item.imageUrl}
                     alt={item.title}

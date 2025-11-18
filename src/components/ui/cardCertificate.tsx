@@ -12,7 +12,7 @@ interface CardProps {
 export default function Card({ certificate, onClick }: CardProps) {
   return (
     // Correção: Trocado 'md:h-[342px]' por 'md:min-h-[342px]'
-    <div className="w-[364px] min-h-[236px] md:w-[424px] md:min-h-[342px] rounded-md bg-[#FFF] shadow-[0px_2px_2px_rgba(0,0,0,0.25)] p-6 flex flex-col">
+    <div className="w-[364px] min-h-[236px] md:w-[424px] md:min-h-[342px] rounded-md bg-[#FFF] shadow-[0px_2px_2px_0px_rgba(0,0,0,0.6)] p-6 flex flex-col">
       {/* 2. Este 'div' agora cresce, empurrando o botão para baixo */}
       <div className="flex-grow">
         {/* 3. Removida altura fixa 'h-[80px]' */}

@@ -8,7 +8,7 @@ export const certificatesMock: Certificate[] = [
       "Certificado de conclusão da trilha Marketing Digital para Sua Empresa: Primeiros Passos (Sebrae), carga horária de 6h, realizado entre 29/11/2024 e 02/12/2024.",
     images: ["/certificates/marketing-1.png"],
     pdfURL: "/certificates/marketing.pdf",
-    type: 'pdf',
+    type: "pdf",
   },
   {
     id: 2,
@@ -20,31 +20,25 @@ export const certificatesMock: Certificate[] = [
       "/certificates/graphic-designer-2.png",
     ],
     pdfURL: "/certificates/graphic-designer.pdf",
-    type: 'pdf',
+    type: "pdf",
   },
   {
     id: 3,
-    title: "Nivel 3 Advanced língua inglesa",
+    title: "Nivel 3 Advanced Língua Inglesa",
     description:
       "Conclusão do  Nível 3 - ADVANCED do curso de língua inglesa NEW UBEST, em 06/06/2022",
-    images: [
-      "/certificates/UBEST-1.png",
-      "/certificates/UBEST-2.png",
-    ],
+    images: ["/certificates/UBEST-1.png", "/certificates/UBEST-2.png"],
     pdfURL: "/certificates/UBEST.pdf",
-    type: 'pdf',
+    type: "pdf",
   },
   {
     id: 4,
     title: "Branding Construção de Marca",
     description:
       "Certificado de conclusão da trilha Branding Construção de Marca (GINEAD), carga horária de 60h, concluído em 18/04/2024.",
-    images: [
-      "/certificates/branding-1.png",
-      "/certificates/branding-2.png",
-    ],
+    images: ["/certificates/branding-1.png", "/certificates/branding-2.png"],
     pdfURL: "/certificates/branding.pdf",
-    type: 'pdf',
+    type: "pdf",
   },
   {
     id: 5,
@@ -56,7 +50,7 @@ export const certificatesMock: Certificate[] = [
       "/certificates/design-theory-2.png",
     ],
     pdfURL: "/certificates/design-theory.pdf",
-    type: 'pdf',
+    type: "pdf",
   },
   {
     id: 6,
@@ -68,6 +62,6 @@ export const certificatesMock: Certificate[] = [
       "/certificates/color-tipography-2.png",
     ],
     pdfURL: "/certificates/color-tipography.pdf",
-    type: 'pdf',
+    type: "pdf",
   },
 ];
