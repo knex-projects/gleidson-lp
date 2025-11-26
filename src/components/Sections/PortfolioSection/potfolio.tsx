@@ -94,16 +94,18 @@ const PortfolioSection = () => {
                 key={item.id}
                 className="basis-full md:basis-1/2 lg:w-[32rem] flex items-end justify-center "
               >
-                <div className="w-full flex items-center justify-center ">
+                <div
+                  className={cn(
+                    "rounded-lg overflow-hidden transition-all duration-500 ease-out",
+                    index === current
+                      ? "md:scale-110 z-20 shadow-[1px_1px_6px_rgba(0,0,0,0.35)]"
+                      : "md:scale-90 z-10 md:opacity-60 shadow-[-4px_4px_14px_rgba(0,0,0,0.3),4px_4px_14px_rgba(0,0,0,0.3)]"
+                  )}
+                >
                   <img
                     src={item.imageUrl}
                     alt={item.title}
-                    className={cn(
-                      "object-cover rounded-lg transition-all duration-500 ease-out",
-                      index === current
-                        ? "md:scale-110 z-20"
-                        : "md:scale-90 z-10 md:opacity-60"
-                    )}
+                    className="object-cover w-full h-full"
                   />
                 </div>
               </CarouselItem>
